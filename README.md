@@ -1,5 +1,5 @@
 ![fsw-barber-website](https://github.com/user-attachments/assets/84cb19c3-6d38-41f7-9a5c-67b3bf6c18da)
-## FSW Barber 💈
+# FSW Barber 💈
 
 Sistema completo para barbearias
 O FSW Barber é um sistema robusto de agendamento e gerenciamento para barbearias, com backend integrado e banco de dados.
