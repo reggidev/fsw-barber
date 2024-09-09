@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "FSW Barber",
   description:
-    "Plataforma completa com agendamento e gerenciador de serviços para barbearias, com login Google,",
+    "Plataforma completa com agendamento e gerenciador de serviços para barbearias com login Google,",
 }
 
 export default function RootLayout({
