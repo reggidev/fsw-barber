@@ -13,6 +13,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@auth/core": "^0.37.4",
     "@auth/prisma-adapter": "^2.4.2",
     "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.17.0",
