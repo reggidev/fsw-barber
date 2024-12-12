@@ -63,29 +63,31 @@ const Header = () => {
               </Link>
             </Button>
 
-            <Button variant="ghost">
+            <div>
               {data?.user ? (
                 <Link
                   href="/bookings"
                   className={`flex gap-2 ${pathname === '/bookings' ? 'font-bold text-primary' : ''}`}
                 >
-                  <CalendarIcon size={18} />
-                  Agendamentos
+                  <Button variant="ghost" className="flex gap-2">
+                    <CalendarIcon size={18} />
+                    Agendamentos
+                  </Button>
                 </Link>
               ) : (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className="flex gap-2">
+                    <Button variant="ghost" className="flex gap-2">
                       <CalendarIcon size={18} />
                       Agendamentos
-                    </div>
+                    </Button>
                   </DialogTrigger>
                   <DialogContent className="w-[90%]">
                     <SignInDialog />
                   </DialogContent>
                 </Dialog>
               )}
-            </Button>
+            </div>
           </div>
 
           <div className="flex gap-3">
