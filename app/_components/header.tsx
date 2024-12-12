@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 
 import SidebarSheet from './sidebar-sheet'
@@ -21,6 +22,7 @@ import { Sheet, SheetTrigger } from './ui/sheet'
 
 const Header = () => {
   const { data } = useSession()
+  const pathname = usePathname()
   const handleLogoutClick = () => signOut()
 
   return (
@@ -52,14 +54,20 @@ const Header = () => {
             </Link>
 
             <Button className="justify-start gap-2" variant="ghost" asChild>
-              <Link href="/">
+              <Link
+                href="/"
+                className={`${pathname === '/' ? 'font-bold text-primary' : ''}`}
+              >
                 <HomeIcon size={18} />
                 Início
               </Link>
             </Button>
 
             <Button className="justify-start gap-2" variant="ghost" asChild>
-              <Link href="/bookings">
+              <Link
+                href="/bookings"
+                className={`${pathname === '/bookings' ? 'font-bold text-primary' : ''}`}
+              >
                 <CalendarIcon size={18} />
                 Agendamento
               </Link>
