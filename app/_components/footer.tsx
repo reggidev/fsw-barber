@@ -7,7 +7,7 @@ const Footer = () => {
     <footer>
       <Card>
         <CardContent className="px-5 py-6">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-400 md:text-center">
             &copy; {new Date().getFullYear()} Copyright{' '}
             <span className="font-bold">FSW Barber</span>
           </p>

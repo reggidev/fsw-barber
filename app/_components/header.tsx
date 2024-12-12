@@ -46,11 +46,11 @@ const Header = () => {
       {/* Desktop NavBar */}
       <Card className="hidden md:flex">
         <CardContent className="flex w-full items-center justify-between p-5 px-10">
-          <Link href="/">
-            <Image src="/logo.png" width={120} height={18} alt="FSW Barber" />
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link href="/" className="mr-6">
+              <Image src="/logo.png" width={120} height={18} alt="FSW Barber" />
+            </Link>
 
-          <div className="flex gap-2">
             <Button className="justify-start gap-2" variant="ghost" asChild>
               <Link href="/">
                 <HomeIcon size={18} />
@@ -94,7 +94,7 @@ const Header = () => {
             )}
             {data?.user && (
               <div>
-                <Button size="sm" onClick={handleLogoutClick}>
+                <Button size="xs" onClick={handleLogoutClick}>
                   <LogOutIcon size={14} />
                 </Button>
               </div>

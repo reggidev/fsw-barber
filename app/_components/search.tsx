@@ -17,7 +17,6 @@ const formSchema = z.object({
 })
 
 const Search = () => {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,14 +32,17 @@ const Search = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex gap-2">
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className="flex gap-2 md:mx-auto md:max-w-[500px]"
+      >
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="Faça sua busca..." {...field} />
+                <Input placeholder="Busque por barbearia..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
