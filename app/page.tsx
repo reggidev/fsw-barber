@@ -27,7 +27,7 @@ const Home = async () => {
   return (
     <>
       <Header />
-      <div className="p-5">
+      <div className="container p-5">
         <h2 className="text-xl font-bold md:text-center">
           Olá, {session?.user ? session.user.name : 'bem vindo'}!
         </h2>

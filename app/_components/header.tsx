@@ -47,7 +47,7 @@ const Header = () => {
 
       {/* Desktop NavBar */}
       <Card className="hidden md:flex">
-        <CardContent className="flex w-full items-center justify-between p-5 px-10">
+        <CardContent className="container flex w-full items-center justify-between p-5 px-10">
           <div className="flex items-center gap-2">
             <Link href="/" className="mr-6">
               <Image src="/logo.png" width={120} height={18} alt="FSW Barber" />
