@@ -1,6 +1,7 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["@reggidev/eslint-config/next"],
+  "plugins": ["simple-import-sort", "react"],
   "rules": {
-    "no-unused-vars": "error"
+    "simple-import-sort/imports": "error"
   }
 }
