@@ -1,16 +1,18 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Toaster } from "sonner"
-import Footer from "./_components/footer"
-import AuthProvider from "./_providers/auth"
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"] })
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { Toaster } from 'sonner'
+
+import Footer from './_components/footer'
+import AuthProvider from './_providers/auth'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "FSW Barber",
+  title: 'FSW Barber',
   description:
-    "Plataforma completa com agendamento e gerenciador de serviços para barbearias com login Google,",
+    'Plataforma completa com agendamento e gerenciador de serviços para barbearias com login Google,',
 }
 
 export default function RootLayout({

@@ -1,7 +1,8 @@
-"use server"
+'use server'
 
-import { revalidatePath } from "next/cache"
-import { db } from "../_lib/prisma"
+import { revalidatePath } from 'next/cache'
+
+import { db } from '../_lib/prisma'
 
 export const deleteBooking = async (bookingId: string) => {
   await db.booking.delete({
@@ -9,5 +10,5 @@ export const deleteBooking = async (bookingId: string) => {
       id: bookingId,
     },
   })
-  revalidatePath("/bookings")
+  revalidatePath('/bookings')
 }

@@ -1,9 +1,22 @@
-"use client"
+'use client'
 
-import type { Barbershop, BarbershopService, Booking } from "@prisma/client"
-import Image from "next/image"
-import { Button } from "./ui/button"
-import { Card, CardContent } from "./ui/card"
+import type { Barbershop, BarbershopService, Booking } from '@prisma/client'
+import { isPast, isToday, set } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useEffect, useMemo, useState } from 'react'
+import { toast } from 'sonner'
+
+import { createBooking } from '../_actions/create-booking'
+import { getBookings } from '../_actions/get-bookings'
+import BookingSummary from './booking-summary'
+import SignInDialog from './sign-in-dialog'
+import { Button } from './ui/button'
+import { Calendar } from './ui/calendar'
+import { Card, CardContent } from './ui/card'
+import { Dialog, DialogContent } from './ui/dialog'
 import {
   Sheet,
   SheetClose,
@@ -11,47 +24,35 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-} from "./ui/sheet"
-import { Calendar } from "./ui/calendar"
-import { ptBR } from "date-fns/locale"
-import { useEffect, useMemo, useState } from "react"
-import { isPast, isToday, set } from "date-fns"
-import { createBooking } from "../_actions/create-booking"
-import { useSession } from "next-auth/react"
-import { toast } from "sonner"
-import { getBookings } from "../_actions/get-bookings"
-import { Dialog, DialogContent } from "./ui/dialog"
-import SignInDialog from "./sign-in-dialog"
-import BookingSummary from "./booking-summary"
-import { useRouter } from "next/navigation"
+} from './ui/sheet'
 
 interface ServiceItemProps {
   service: BarbershopService
-  barbershop: Pick<Barbershop, "name">
+  barbershop: Pick<Barbershop, 'name'>
 }
 
 const TIME_LIST = [
-  "08:00",
-  "08:30",
-  "09:00",
-  "09:30",
-  "10:00",
-  "10:30",
-  "11:00",
-  "11:30",
-  "12:00",
-  "12:30",
-  "13:00",
-  "13:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-  "17:30",
-  "18:00",
+  '08:00',
+  '08:30',
+  '09:00',
+  '09:30',
+  '10:00',
+  '10:30',
+  '11:00',
+  '11:30',
+  '12:00',
+  '12:30',
+  '13:00',
+  '13:30',
+  '14:00',
+  '14:30',
+  '15:00',
+  '15:30',
+  '16:00',
+  '16:30',
+  '17:00',
+  '17:30',
+  '18:00',
 ]
 
 interface GetTimeListProps {
@@ -61,8 +62,8 @@ interface GetTimeListProps {
 
 const getTimeList = ({ bookings, selectedDay }: GetTimeListProps) => {
   return TIME_LIST.filter((time) => {
-    const hour = Number(time.split(":")[0])
-    const minutes = Number(time.split(":")[1])
+    const hour = Number(time.split(':')[0])
+    const minutes = Number(time.split(':')[1])
 
     const timeIsOnThePast = isPast(set(new Date(), { hours: hour, minutes }))
     if (timeIsOnThePast && isToday(selectedDay)) {
@@ -108,8 +109,8 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   const selectedDate = useMemo(() => {
     if (!selectedDay || !selectedTime) return
     return set(selectedDay, {
-      hours: Number(selectedTime?.split(":")[0]),
-      minutes: Number(selectedTime?.split(":")[1]),
+      hours: Number(selectedTime?.split(':')[0]),
+      minutes: Number(selectedTime?.split(':')[1]),
     })
   }, [selectedDay, selectedTime])
 
@@ -143,15 +144,15 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         date: selectedDate,
       })
       handleBookingSheetOpenChange()
-      toast.success("Reserva criada com sucesso!", {
+      toast.success('Reserva criada com sucesso!', {
         action: {
-          label: "Ver agendamentos",
-          onClick: () => router.push("/bookings"),
+          label: 'Ver agendamentos',
+          onClick: () => router.push('/bookings'),
         },
       })
     } catch (error) {
       console.error(error)
-      toast.error("Erro ao criar reserva!")
+      toast.error('Erro ao criar reserva!')
     }
   }
 
@@ -183,9 +184,9 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
             {/* PREÇO E BOTÃO */}
             <div className="flex items-center justify-between">
               <p className="text-sm font-bold text-primary">
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
+                {Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
                 }).format(Number(service.price))}
               </p>
 
@@ -214,25 +215,25 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                       fromDate={new Date()}
                       styles={{
                         head_cell: {
-                          width: "100%,",
-                          textTransform: "capitalize",
+                          width: '100%,',
+                          textTransform: 'capitalize',
                         },
                         cell: {
-                          width: "100%",
+                          width: '100%',
                         },
                         button: {
-                          width: "100%",
+                          width: '100%',
                         },
                         nav_button_previous: {
-                          width: "32px",
-                          height: "32px",
+                          width: '32px',
+                          height: '32px',
                         },
                         nav_button_next: {
-                          width: "32px",
-                          height: "32px",
+                          width: '32px',
+                          height: '32px',
                         },
                         caption: {
-                          textTransform: "capitalize",
+                          textTransform: 'capitalize',
                         },
                       }}
                     />
@@ -245,7 +246,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                           <Button
                             key={time}
                             variant={
-                              selectedTime === time ? "default" : "outline"
+                              selectedTime === time ? 'default' : 'outline'
                             }
                             className="rounded-full"
                             onClick={() => handleTimeSelect(time)}

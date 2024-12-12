@@ -1,24 +1,25 @@
-import Header from "./_components/header"
-import { Button } from "./_components/ui/button"
-import Image from "next/image"
-import { db } from "./_lib/prisma"
-import BarbershopItem from "./_components/barbershop-item"
-import { quickSearchOptions } from "./_constants/search"
-import BookingItem from "./_components/booking-item"
-import Search from "./_components/search"
-import Link from "next/link"
-import { getServerSession } from "next-auth"
-import { authOptions } from "./_lib/auth"
-import { format } from "date-fns"
-import { ptBR } from "date-fns/locale"
-import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import Image from 'next/image'
+import Link from 'next/link'
+import { getServerSession } from 'next-auth'
+
+import BarbershopItem from './_components/barbershop-item'
+import BookingItem from './_components/booking-item'
+import Header from './_components/header'
+import Search from './_components/search'
+import { Button } from './_components/ui/button'
+import { quickSearchOptions } from './_constants/search'
+import { getConfirmedBookings } from './_data/get-confirmed-bookings'
+import { authOptions } from './_lib/auth'
+import { db } from './_lib/prisma'
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
   const popularBarbershops = await db.barbershop.findMany({
     orderBy: {
-      name: "desc",
+      name: 'desc',
     },
   })
   const confirmedBookings = await getConfirmedBookings()
@@ -30,15 +31,15 @@ const Home = async () => {
       <div className="p-5">
         {/* TEXTO */}
         <h2 className="text-xl font-bold">
-          Olá, {session?.user ? session.user.name : "bem vindo"}!
+          Olá, {session?.user ? session.user.name : 'bem vindo'}!
         </h2>
         <p>
           <span className="capitalize">
-            {format(new Date(), "EEEE, dd", { locale: ptBR })}
+            {format(new Date(), 'EEEE, dd', { locale: ptBR })}
           </span>
           <span>&nbsp;de&nbsp;</span>
           <span className="capitalize">
-            {format(new Date(), "MMMM", { locale: ptBR })}
+            {format(new Date(), 'MMMM', { locale: ptBR })}
           </span>
         </p>
 

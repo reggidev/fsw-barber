@@ -1,18 +1,18 @@
-"use client"
+'use client'
 
-import { useRouter } from "next/navigation"
-import { Input } from "./ui/input"
-import { Button } from "./ui/button"
-import { SearchIcon } from "lucide-react"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SearchIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-import { z } from "zod"
-import { useForm } from "react-hook-form"
-import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form"
+import { Button } from './ui/button'
+import { Form, FormControl, FormField, FormItem, FormMessage } from './ui/form'
+import { Input } from './ui/input'
 
 const formSchema = z.object({
   title: z.string().trim().min(1, {
-    message: "Digite algo para buscar",
+    message: 'Digite algo para buscar',
   }),
 })
 
@@ -21,7 +21,7 @@ const Search = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
+      title: '',
     },
   })
 
