@@ -60,12 +60,34 @@ const SidebarSheet = () => {
             </Link>
           </Button>
         </SheetClose>
-        <Button className="justify-start gap-2" variant="ghost" asChild>
-          <Link href="/bookings">
-            <CalendarIcon size={18} />
-            Agendamento
-          </Link>
-        </Button>
+        <div>
+          {data?.user ? (
+            <Link href="/bookings">
+              <Button
+                variant="ghost"
+                className="flex w-full justify-start gap-2"
+              >
+                <CalendarIcon size={18} />
+                Agendamentos
+              </Button>
+            </Link>
+          ) : (
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex w-full justify-start gap-2"
+                >
+                  <CalendarIcon size={18} />
+                  Agendamentos
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="w-[90%]">
+                <SignInDialog />
+              </DialogContent>
+            </Dialog>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid py-5">
