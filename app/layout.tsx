@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'FSW Barber',
   description:
-    'Plataforma completa com agendamento e gerenciador de serviços para barbearias com login Google,',
+    'Encontre barbearias próximas, explore serviços, agende com facilidade e acompanhe seus agendamentos passados e futuros | Desenvolvido por ReggiDev',
 }
 
 export default function RootLayout({
