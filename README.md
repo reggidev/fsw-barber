@@ -4,7 +4,7 @@
 Sistema completo para barbearias
 O FSW Barber é um sistema robusto de agendamento e gerenciamento para barbearias, com backend integrado e banco de dados.
 
-Visite agora: https://fsw-barber-webapp.vercel.app/
+Visite agora: [FSW Barber](https://fsw-barber-webapp.vercel.app/)
 
 ## Como funciona
 
