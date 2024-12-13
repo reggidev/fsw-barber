@@ -1,4 +1,4 @@
-![fsw-barber-website](https://github.com/user-attachments/assets/84cb19c3-6d38-41f7-9a5c-67b3bf6c18da)
+![fsw-barber-presentation](https://github.com/user-attachments/assets/f43b4231-4a86-4fba-9fd4-a6ac0840b25f)
 # FSW Barber 💈
 
 Sistema completo para barbearias
